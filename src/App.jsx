@@ -12,12 +12,9 @@ function App() {
     */
 
   //state hook for todos - stateful variable
-  const [todos, setTodos] = useState([
-    /*'Go to the gym',
-    'Learn React',
-    'Build a todo app'
-    */
-  ])
+  const [todos, setTodos] = useState([ /*'Go to the gym', 'Learn React', 'Build a todo app' */])
+  const [todoValue, setTodoValue] = useState('')
+
 
   function handleAddTodos(newTodo) {
     const newTodoList = [...todos, newTodo] //spread out old todod
@@ -32,13 +29,15 @@ function App() {
   }
 
   function handleEditTodo(index) {
-
+    const valueToBeEdited = todos[index]
+    setTodoValue(valueToBeEdited)
+    handleDeleteTodo(index)
   }
 
   return (
     <>
-      <TodoInput handleAddTodos={handleAddTodos} />
-      <TodoList handleDeleteTodo={handleDeleteTodo} todos={todos} />
+      <TodoInput todoValue={todoValue} setTodoValue={setTodoValue} handleAddTodos={handleAddTodos} />
+      <TodoList handleEditTodo={handleEditTodo} handleDeleteTodo={handleDeleteTodo} todos={todos} />
     </>
   )
 }
