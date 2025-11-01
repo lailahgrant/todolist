@@ -1,5 +1,7 @@
 # Todo App in React 
 
+> CRUD Todo App in ReactJS
+
 - [x] Props
   - [ ] children
   
